@@ -1,3 +1,7 @@
+## Disclaimer
+
+Hey there! Just wanted to let you know that I'm not really a JS developer, so I'm not exactly an expert when it comes to Express either. So if you do decide to use it, please keep that in mind and use at your own risk!
+
 ## Installation
 
 - `docker-compose up -d`
