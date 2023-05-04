@@ -3,7 +3,7 @@ const router = express.Router();
 
 router.post('/endpoint1', (req, res) => {
     const { name, age } = req.body;
-    res.json({ message: `Hello, ${name}! You are ${age} years old.` });
+    res.json({ message: `Hello, ${name}! You are ${age} years old. PORT is ${process.env.PORT}` });
 });
 
 router.post('/endpoint2', (req, res) => {
