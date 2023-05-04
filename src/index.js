@@ -1,3 +1,4 @@
+const testModule = require('./modules/testModule');
 const express = require('express');
 const morgan = require('morgan');
 const dotenv = require('dotenv');const app = express();
@@ -5,6 +6,8 @@ app.use(express.json());
 
 // Load environment variables from .env file
 dotenv.config();
+
+app.use('/test', testModule);
 
 app.post('/upload', (req, res) => {
     const fileUrl = req.body.fileUrl;
