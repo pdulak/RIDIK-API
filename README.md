@@ -19,12 +19,9 @@ I don't need to expose it on the domain for now. It will change in the future.
 or without docker:
 
 - `npm i`
+- `npx sequelize-cli db:migrate`
+- `npx sequelize-cli seed:generate --name system-message`
 - `nodemon index.js`
-
-## Run without docker
-
-- 'npm install'
-- 'npm start'
 
 ## Materials used
 
