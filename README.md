@@ -4,15 +4,16 @@ Hey there! Just wanted to let you know that I'm not really a JS developer, so I'
 
 ## Installation
 
+- in order to configure SlackBot Applicaiton in Slack - read "materials used" - Build a slackbot in node with slacks bolt API
 - `npm i`
 - `npx sequelize-cli db:migrate`
 - `npx sequelize-cli seed:generate --name system-message`
 - `docker-compose up -d`
 
-## Rebuild
+or without docker:
 
-- `docker-compose down` to turn off existing server
-- `docker-compose up -d --build` to rebuild server
+- `npm i`
+- `nodemon index.js`
 
 ## Run without docker
 
