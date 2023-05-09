@@ -16,3 +16,6 @@ Hey there! Just wanted to let you know that I'm not really a JS developer, so I'
 - 'npm install'
 - 'npm start'
 
+## Materials used
+
+- [Build a slackbot in node with slacks bolt API](https://blog.logrocket.com/build-a-slackbot-in-node-js-with-slacks-bolt-api/)
