@@ -1,4 +1,7 @@
 'use strict';
+
+const { v4 } = require("uuid");
+
 const {
   Model
 } = require('sequelize');
@@ -21,6 +24,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Message',
+    hooks: {
+        beforeCreate: (message, options) => {
+            message.uuid = v4();
+        }
+    }
   });
   return Message;
 };
