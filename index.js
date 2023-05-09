@@ -6,7 +6,7 @@ app.use(express.json());
 
 // Load environment variables from .env file
 dotenv.config();
-
+app.use(morgan('dev'));
 app.use('/test', testModule);
 
 app.post('/upload', (req, res) => {
@@ -16,8 +16,6 @@ app.post('/upload', (req, res) => {
 
     res.json({ success: true });
 });
-
-app.use(morgan('dev'));
 
 app.get('/', (req, res) => {
     res.send('Hello, World!');
