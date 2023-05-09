@@ -1,7 +1,9 @@
 const { App } = require("@slack/bolt");
 const dotenv = require('dotenv');
+const { Dao } = require("./dao")
 
 dotenv.config();
+const dao = Dao()
 
 const slackBot = new App({
     token: process.env.SLACK_BOT_TOKEN,
@@ -13,16 +15,27 @@ const slackBot = new App({
 slackBot.command("/knowledge", async ({ command, ack, say }) => {
     try {
         await ack();
-        say(`Yaaay! that command works! ${JSON.stringify(command)}`);
+        const answer = `Yaaay! that command works! ${JSON.stringify(command.text)}`;
+        say(answer);
+        const result = await dao.Message.create({ question: command.text, answer: answer });
+        console.log(result);
     } catch (error) {
         console.log("err")
         console.error(error);
     }
 });
 
-slackBot.message(/ridik/, async ({ message, say }) => {
+slackBot.message(/./, async ({ message, say }) => {
     try {
-        say(`Ridik: ${JSON.stringify(message)}`);
+        // pull previous steps of conversation from db
+        // add current step to db
+        const thisStep = await dao.Message.create({ question: message.text, answer: "" });
+        // run current step through GPT
+        // add GPT response to db
+        thisStep.answer = `What a lovely text of yours! ${JSON.stringify(message.text)}`;
+        thisStep.save();
+        // send to the user
+        say(thisStep.answer);
     } catch (error) {
         console.log("err")
         console.error(error);
