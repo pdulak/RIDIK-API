@@ -1,0 +1,14 @@
+{
+  "development": {
+    "storage": "./ridik-api-db.sqlite",
+    "dialect": "sqlite"
+  },
+  "test": {
+    "storage": "./ridik-api-db.sqlite",
+    "dialect": "sqlite"
+  },
+  "production": {
+    "storage": "./ridik-api-db.sqlite",
+    "dialect": "sqlite"
+  }
+}
