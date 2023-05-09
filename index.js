@@ -1,21 +1,15 @@
 const testModule = require('./modules/testModule');
+const slackBot = require('./modules/slackBot');
 const express = require('express');
 const morgan = require('morgan');
-const dotenv = require('dotenv');const app = express();
+const dotenv = require('dotenv');
+const app = express();
 app.use(express.json());
 
 // Load environment variables from .env file
 dotenv.config();
 app.use(morgan('dev'));
 app.use('/test', testModule);
-
-app.post('/upload', (req, res) => {
-    const fileUrl = req.body.fileUrl;
-
-    // Do something with the fileUrl here...
-
-    res.json({ success: true });
-});
 
 app.get('/', (req, res) => {
     res.send('Hello, World!');
