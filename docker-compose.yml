@@ -1,12 +1,14 @@
 version: '3'
 
 services:
-  api:
+  ridik-api:
     build: .
+    # command: nodemon index.js
     restart: always
     ports:
       - '3000:3000'
+      - '3001:3001'
     volumes:
-      - ./logs:/app/logs
+      - .:/app
     env_file:
       - .env
