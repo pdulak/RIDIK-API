@@ -1,9 +1,8 @@
 const { App } = require("@slack/bolt");
 const dotenv = require('dotenv');
-const { Dao } = require("./dao")
+const { dao } = require("./dao")
 
 dotenv.config();
-const dao = Dao()
 
 const slackBot = new App({
     token: process.env.SLACK_BOT_TOKEN,
@@ -27,7 +26,13 @@ slackBot.command("/knowledge", async ({ command, ack, say }) => {
 
 slackBot.message(/./, async ({ message, say }) => {
     try {
+        say('...');
         // pull previous steps of conversation from db
+        const messages = await dao.sequelize.query(`
+            select id, question, answer, createdAt, system from Messages
+            where createdAt > datetime(datetime(), '-30 minutes')
+            OR system`, { type: dao.QueryTypes.SELECT });
+        say(JSON.stringify(messages));
         // add current step to db
         const thisStep = await dao.Message.create({ question: message.text, answer: "" });
         // run current step through GPT

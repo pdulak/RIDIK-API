@@ -1,4 +1,5 @@
 const { sequelize, Message } = require('../models');
+const { QueryTypes } = require('sequelize');
 
 function Dao() {
 
@@ -16,10 +17,11 @@ function Dao() {
     return {
         checkConnection,
         sequelize,
+        QueryTypes,
         Message,
     }
 }
 
 module.exports = {
-    Dao,
+    dao: Dao(),
 }
